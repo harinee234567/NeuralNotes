@@ -1,0 +1,76 @@
+angry:
+Taylor Swift: Bad Blood, Look What You Made Me Do, Picture to Burn, We Are Never Getting Back Together
+Ed Sheeran: Bloodstream, You Need Me I Don't Need You, Don't, Eraser
+Ariana Grande: Break Up With Your Girlfriend, God Is a Woman, Thank U Next, Bloodline
+Adele: Rolling in the Deep, Rumour Has It, Send My Love, Set Fire to the Rain
+The Weeknd: The Hills, Often, Can't Feel My Face, Low Life
+BTS: Mic Drop, Cypher Pt.4, UGH!, Dionysus
+D.O.: Tell Me What Is Love, Bite, I'm Gonna Love You
+Arctic Monkeys: Do I Wanna Know?, Arabella, R U Mine?, Brianstorm
+Radiohead: Karma Police, Paranoid Android, Creep
+
+happy:
+Taylor Swift: Shake It Off, ME!, 22, Love Story, You Belong With Me
+Ed Sheeran: Shape of You, Perfect, Thinking Out Loud, Sing
+Ariana Grande: 7 Rings, No Tears Left to Cry, Side to Side, Thank U Next
+Adele: Make You Feel My Love, When We Were Young, Skyfall
+The Weeknd: Blinding Lights, Starboy, I Feel It Coming, Can't Feel My Face
+BTS: Dynamite, Boy With Luv, Permission to Dance, Butter
+D.O.: Rose, My Love, Si Fueras Mia, That's Okay
+Vampire Weekend: A-Punk, This Life, Harmony Hall, Sunflower
+Tame Impala: The Less I Know the Better, Feels Like We Only Go Backwards, Let It Happen
+
+sad:
+Taylor Swift: All Too Well, Back to December, The Moment I Knew, Exile
+Ed Sheeran: Photograph, Happier, The A Team, Small Bump
+Ariana Grande: Ghostin, Breathin, Needy, Imagine
+Adele: Someone Like You, Hello, When We Were Young, Turning Tables
+The Weeknd: Call Out My Name, Hurt You, Tears in the Rain, After Hours
+BTS: Spring Day, Blue & Grey, The Truth Untold, Butterfly
+D.O.: That's Okay, Dad, Crying Out, Lost
+Phoebe Bridgers: Motion Sickness, Funeral, Scott Street, Moon Song
+Lana Del Rey: Summertime Sadness, Young and Beautiful, Video Games
+
+neutral:
+Taylor Swift: Cardigan, Willow, Anti-Hero, Lover, Delicate
+Ed Sheeran: Castle on the Hill, Photograph, Galway Girl, Shivers
+Ariana Grande: Positions, POV, Just Like Magic, 34+35
+Adele: Easy on Me, Oh My God, To Be Loved, Water Under the Bridge
+The Weeknd: Save Your Tears, In Your Eyes, Sacrifice, Out of Time
+BTS: Life Goes On, Stay Gold, Film Out, Mikrokosmos
+D.O.: Ordinary Days, I'm Fine, About Time, Somebody
+Lana Del Rey: Mariners Apartment Complex, Chemtrails Over the Country Club, White Dress
+Vampire Weekend: Oxford Comma, Diane Young, Cape Cod Kwassa Kwassa
+
+fear:
+Taylor Swift: Look What You Made Me Do, I Knew You Were Trouble, Haunted, Anti-Hero
+Ed Sheeran: Save Myself, Eraser, The City, Small Bump
+Ariana Grande: Breathin, Get Well Soon, No Tears Left to Cry, My Hair
+Adele: Cold Shoulder, Hometown Glory, Remedy, Love in the Dark
+The Weeknd: Scared to Live, Gasoline, Escape From LA, Faith
+BTS: Black Swan, Louder Than Bombs, Shadow, Singularity
+D.O.: Lost, Bite, Si Fueras Mia
+Radiohead: Climbing Up the Walls, Exit Music, No Surprises, Street Spirit
+The Neighbourhood: Afraid, Daddy Issues, Wires
+
+disgust:
+Taylor Swift: Better Than Revenge, Mean, Bad Blood, Look What You Made Me Do
+Ed Sheeran: New Man, You Need Me I Don't Need You, Don't, Bloodstream
+Ariana Grande: Break Up With Your Girlfriend, Bloodline, 7 Rings, God Is a Woman
+Adele: Rumour Has It, Rolling in the Deep, Send My Love, Cold Shoulder
+The Weeknd: Low Life, The Hills, Often, Shameless
+BTS: War of Hormone, Spine Breaker, Mic Drop, Outro: Tear
+D.O.: Bite, Tell Me What Is Love, I'm Gonna Love You
+The Neighbourhood: Sweater Weather, Softcore, Devil's Advocate, Prey
+Arctic Monkeys: Brianstorm, Pretty Visitors, The View From The Afternoon
+
+surprise:
+Taylor Swift: Style, Wildest Dreams, Enchanted, Blank Space, Karma
+Ed Sheeran: Shivers, Bad Habits, Sing, Blow, Don't
+Ariana Grande: Dangerous Woman, Into You, Be Alright, Break Free
+Adele: Skyfall, Water Under the Bridge, I Miss You, Rumour Has It
+The Weeknd: Take My Breath, Less Than Zero, Gasoline, Often
+BTS: Idol, Run BTS, Fake Love, DNA, Fire
+D.O.: Rose, Somebody, My Love, I'm Gonna Love You
+Tame Impala: The Less I Know the Better, Borderline, New Person Same Old Mistakes, Elephant
+Arctic Monkeys: Why'd You Only Call Me When You're High, Fluorescent Adolescent, Snap Out of It
