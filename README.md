@@ -1,5 +1,4 @@
-# NeuralNotes
-# Speech Emotion Recognition Music App
+# NeuralNotes - Speech Emotion Recognition Music App
 
 ## Overview
 The **Speech Emotion Recognition Music App** is an intelligent application that detects human emotions from speech input and plays suitable music using **SoundCloud** based on the recognized emotion.  
