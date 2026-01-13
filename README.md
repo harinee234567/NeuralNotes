@@ -1,3 +1,4 @@
+# NeuralNotes
 # Speech Emotion Recognition Music App
 
 ## Overview
