@@ -34,7 +34,7 @@ The goal of this project is to enhance user experience by combining **speech pro
 - **Librosa** – audio feature extraction  
 - **NumPy, Pandas** – data processing  
 - **Scikit-learn / TensorFlow / PyTorch** – model training  
-- **SoundCloud API** – music streaming  
+- **SoundCloud** – music streaming  
 - **Streamlit** – web interface  
 
 ---
@@ -44,7 +44,7 @@ The goal of this project is to enhance user experience by combining **speech pro
 2. Preprocess audio signal  
 3. Extract speech features (MFCC, Chroma, Spectral features, etc.)  
 4. Predict emotion using trained ML model  
-5. Fetch and play emotion-based music from SoundCloud  
+5. Play emotion-based music in SoundCloud  
 
 ---
 
