@@ -4,11 +4,10 @@ import librosa
 import pickle
 import warnings
 from tensorflow import keras
-import sounddevice as sd
 import soundfile as sf
 import tempfile
 import os
-import requests
+from audio_recorder_streamlit import audio_recorder
 from io import BytesIO
 
 warnings.filterwarnings('ignore')
@@ -36,7 +35,7 @@ def load_artifacts():
 
 # Feature extraction functions
 def extract_features(data, sample_rate):
-    # Extract audio features from audio data
+    """Extract audio features from audio data"""
     result = np.array([])
     
     # Calculate appropriate n_fft based on data length
@@ -94,21 +93,6 @@ def extract_features(data, sample_rate):
         st.error(f"Error extracting features: {e}")
         return np.array([])
 
-def record_audio(duration=3, sample_rate=22050):
-    """Record audio from microphone"""
-    try:
-        st.info(f"🎤 Recording for {duration} seconds... Speak now!")
-        recording = sd.rec(int(duration * sample_rate), 
-                          samplerate=sample_rate, 
-                          channels=1, 
-                          dtype='float32')
-        sd.wait()
-        st.success("✅ Recording complete!")
-        return recording.flatten(), sample_rate
-    except Exception as e:
-        st.error(f"Error recording audio: {e}")
-        return None, None
-
 def process_audio_data(audio_data, sr):
     """Process audio data and extract features"""
     try:
@@ -134,7 +118,6 @@ def process_audio_data(audio_data, sr):
         st.error(f"Error processing audio: {e}")
         return None
 
-# Song recommendations based on emotion and artist
 # Load song recommendations from text file
 def load_song_recommendations():
     """Load song recommendations from external text file"""
@@ -201,15 +184,7 @@ def main():
     
     artist = st.sidebar.selectbox(
         "🎤 Select Your Favorite Artist:",
-       ['Taylor Swift', 'Ed Sheeran', 'Ariana Grande', 'Adele', 'The Weeknd', 'BTS', 'D.O.', 'Arctic Monkeys', 'Vampire Weekend', 'Phoebe Bridgers', 'Lana Del Rey', 'Radiohead', 'The Neighbourhood', 'Tame Impala']
-
-    )
-    
-    duration = st.sidebar.slider(
-        "⏱️ Recording Duration (seconds):",
-        min_value=2,
-        max_value=10,
-        value=3
+        ['BTS', 'D.O.', 'Ariana Grande', 'Adele', 'The Weeknd', 'Taylor Swift', 'Ed Sheeran', 'Arctic Monkeys', 'Vampire Weekend', 'Phoebe Bridgers', 'Lana Del Rey', 'Radiohead', 'The Neighbourhood', 'Tame Impala']
     )
     
     st.sidebar.markdown("---")
@@ -231,11 +206,29 @@ def main():
     col1, col2, col3 = st.columns([2, 2, 2])
     
     with col1:
-        if st.button("🔴 Start Recording", type="primary", use_container_width=True):
-            audio_data, sr = record_audio(duration=duration)
-            if audio_data is not None:
+        # Audio recorder replaces the button
+        audio_bytes = audio_recorder(
+            text="Click to record",
+            recording_color="#e74c3c",
+            neutral_color="#1f77b4",
+            icon_name="microphone",
+            icon_size="2x"
+        )
+        
+        # Process audio if recorded
+        if audio_bytes:
+            try:
+                # Convert to numpy array
+                audio_data, sr = sf.read(BytesIO(audio_bytes))
+                
+                # Convert to mono if stereo
+                if len(audio_data.shape) > 1:
+                    audio_data = np.mean(audio_data, axis=1)
+                
+                # Store in session state
                 st.session_state.recorded_audio = audio_data
                 st.session_state.sample_rate = sr
+                
                 # Clear previous temp file if exists
                 if st.session_state.temp_audio_path and os.path.exists(st.session_state.temp_audio_path):
                     try:
@@ -243,6 +236,9 @@ def main():
                     except:
                         pass
                 st.session_state.temp_audio_path = None
+                
+            except Exception as e:
+                st.error(f"Error processing audio: {e}")
     
     with col2:
         if st.button("🗑️ Clear Recording", use_container_width=True):
