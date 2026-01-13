@@ -48,6 +48,22 @@ The goal of this project is to enhance user experience by combining **speech pro
 
 ---
 
+## Live Preview
+- https://neural-notes.streamlit.app/
+
+---
+
+### How to Use the App
+1. **Select your favourite artist** from the drop-down and **record duration (in seconds)** from the right pane.  
+2. Click on **"Click to Record"** and record your audio.  
+   - ⚠️ **Note:** Make sure your microphone is enabled and working.  
+   - While recording, the **microphone emoji is red**.  
+   - After recording is complete, the **microphone emoji turns blue**.  
+3. Click on **"Analyze Emotion"** to detect your emotions and get song recommendations.  
+4. Pick a song from the recommended list and click on **"Play on SoundCloud"** to listen.  
+
+---
+
 ## Developers
 - **Harineesha Nutakki**  
 - **Attili Valli Sai Meghana**
