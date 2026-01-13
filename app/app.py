@@ -12,6 +12,16 @@ from io import BytesIO
 
 warnings.filterwarnings('ignore')
 
+BASE_DIR = os.path.dirname(__file__)
+
+ARTIFACTS_DIR = os.path.join(BASE_DIR, "artifacts")
+
+MODEL_PATH = os.path.join(ARTIFACTS_DIR, "emotion_model_final.keras")
+LABEL_PATH = os.path.join(ARTIFACTS_DIR, "label_encoder.pkl")
+SCALER_PATH = os.path.join(ARTIFACTS_DIR, "scaler.pkl")
+SONGS_PATH = os.path.join(BASE_DIR, "songs_data.txt")
+
+
 # Page configuration
 st.set_page_config(
     page_title="Speech Emotion Recognition",
@@ -23,12 +33,16 @@ st.set_page_config(
 @st.cache_resource
 def load_artifacts():
     try:
-        model = keras.models.load_model('artifacts/emotion_model_final.keras')
-        with open('artifacts/label_encoder.pkl', 'rb') as f:
+        model = keras.models.load_model(MODEL_PATH)
+
+        with open(LABEL_PATH, 'rb') as f:
             label_encoder = pickle.load(f)
-        with open('artifacts/scaler.pkl', 'rb') as f:
+
+        with open(SCALER_PATH, 'rb') as f:
             scaler = pickle.load(f)
+
         return model, label_encoder, scaler
+
     except Exception as e:
         st.error(f"Error loading model artifacts: {e}")
         return None, None, None
@@ -121,7 +135,7 @@ def process_audio_data(audio_data, sr):
 # Load song recommendations from text file
 def load_song_recommendations():
     """Load song recommendations from external text file"""
-    file_path = 'songs_data.txt'
+    file_path = SONGS_PATH
     recommendations = {}
     current_emotion = None
     
@@ -187,6 +201,13 @@ def main():
         ['BTS', 'D.O.', 'Ariana Grande', 'Adele', 'The Weeknd', 'Taylor Swift', 'Ed Sheeran', 'Arctic Monkeys', 'Vampire Weekend', 'Phoebe Bridgers', 'Lana Del Rey', 'Radiohead', 'The Neighbourhood', 'Tame Impala']
     )
     
+    duration = st.sidebar.slider(
+        "⏱️ Recording Duration (seconds):",
+        min_value=2,
+        max_value=10,
+        value=3
+    )
+    
     st.sidebar.markdown("---")
     st.sidebar.info("💡 **Tip:** Speak clearly and express your emotion for better detection!")
     
@@ -199,6 +220,8 @@ def main():
         st.session_state.emotion_detected = None
     if 'temp_audio_path' not in st.session_state:
         st.session_state.temp_audio_path = None
+    if 'last_audio_bytes' not in st.session_state:
+        st.session_state.last_audio_bytes = None
     
     # Main content
     st.header("🎙️ Record Your Voice")
@@ -206,17 +229,19 @@ def main():
     col1, col2, col3 = st.columns([2, 2, 2])
     
     with col1:
-        # Audio recorder replaces the button
+        # Audio recorder with energy threshold
         audio_bytes = audio_recorder(
             text="Click to record",
             recording_color="#e74c3c",
             neutral_color="#1f77b4",
             icon_name="microphone",
-            icon_size="2x"
+            icon_size="2x",
+            energy_threshold=(-1.0, 1.0),
+            pause_threshold=duration  # Use duration from slider
         )
         
-        # Process audio if recorded
-        if audio_bytes:
+        # Process audio only if it's new
+        if audio_bytes and audio_bytes != st.session_state.last_audio_bytes:
             try:
                 # Convert to numpy array
                 audio_data, sr = sf.read(BytesIO(audio_bytes))
@@ -228,6 +253,7 @@ def main():
                 # Store in session state
                 st.session_state.recorded_audio = audio_data
                 st.session_state.sample_rate = sr
+                st.session_state.last_audio_bytes = audio_bytes
                 
                 # Clear previous temp file if exists
                 if st.session_state.temp_audio_path and os.path.exists(st.session_state.temp_audio_path):
@@ -254,12 +280,11 @@ def main():
             st.session_state.sample_rate = None
             st.session_state.emotion_detected = None
             st.session_state.temp_audio_path = None
+            st.session_state.last_audio_bytes = None
             st.rerun()
     
-    # Display recorded audio
+    # Display recorded audio - only when audio exists
     if st.session_state.recorded_audio is not None:
-        st.success("✅ Audio recorded successfully!")
-        
         # Save to temporary file for playback (only once)
         if st.session_state.temp_audio_path is None or not os.path.exists(st.session_state.temp_audio_path):
             with tempfile.NamedTemporaryFile(delete=False, suffix='.wav') as tmp_file:
