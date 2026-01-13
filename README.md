@@ -35,7 +35,7 @@ The goal of this project is to enhance user experience by combining **speech pro
 - **NumPy, Pandas** – data processing  
 - **Scikit-learn / TensorFlow / PyTorch** – model training  
 - **SoundCloud API** – music streaming  
-- **Flask / Streamlit** (optional) – web interface  
+- **Streamlit** – web interface  
 
 ---
 
